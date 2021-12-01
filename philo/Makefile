@@ -6,13 +6,12 @@
 #    By: yoyoo <yoyoo@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/01 14:50:59 by yoyoo             #+#    #+#              #
-#    Updated: 2021/12/01 17:27:16 by yoyoo            ###   ########.fr        #
+#    Updated: 2021/12/01 19:55:34 by yoyoo            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC				= gcc
-CFLAGS			= -Wall -Wextra -Werror #-fsanitize=address
-
+CFLAGS			= -Wall -Wextra -Werror -g #-fsanitize=address 
 SRCS_DIR		= ./src
 SRCS			= $(addprefix $(SRCS_DIR)/, main.c parsing.c utils.c system_call.c thread.c utils2.c)
 

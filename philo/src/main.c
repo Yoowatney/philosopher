@@ -6,7 +6,7 @@
 /*   By: yoyoo <yoyoo@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/27 18:43:35 by yoyoo             #+#    #+#             */
-/*   Updated: 2021/12/01 17:57:02 by yoyoo            ###   ########.fr       */
+/*   Updated: 2021/12/01 19:54:03 by yoyoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,17 @@ void	ft_free(t_data *data)
 	all_free(data);
 }
 
+int	validate(t_data *data)
+{
+	if (data->num_philo >= 200)
+	{
+		all_free(data);
+		printf("Too many philo\n");
+		return (1);
+	}
+	return (0);
+}
+
 int	main(int argc, char *argv[])
 {
 	t_data	*data;
@@ -61,9 +72,15 @@ int	main(int argc, char *argv[])
 	data = NULL;
 	if (check_arg(argc, argv))
 		return (1);
-	if (parsing(&data, argc, argv))
+	if (parsing(&data, argc, argv) || validate(data))
+	{
 		return (1);
-	run_thread(data);
+	}
+	if (run_thread(data))
+	{
+		printf("thread error\n");
+		return (1);
+	}
 	ft_free(data);
 	return (0);
 }

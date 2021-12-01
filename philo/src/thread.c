@@ -6,7 +6,7 @@
 /*   By: yoyoo <yoyoo@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 14:45:19 by yoyoo             #+#    #+#             */
-/*   Updated: 2021/12/01 18:05:46 by yoyoo            ###   ########.fr       */
+/*   Updated: 2021/12/01 19:42:29 by yoyoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void	monitor(t_data *data)
 	}
 }
 
-void	run_thread(t_data *data)
+int	run_thread(t_data *data)
 {
 	int	i;
 
@@ -84,11 +84,13 @@ void	run_thread(t_data *data)
 	while (i < data->num_philo)
 	{
 		data->philo[i].last_eat_time = get_time();
-		pthread_create(&data->philo[i].thread, NULL,
-			philo_routine, (void *)&data->philo[i]);
+		if (pthread_create(&data->philo[i].thread, NULL,
+			philo_routine, (void *)&data->philo[i]))
+			return (1);
 		pthread_detach(data->philo[i].thread);
 		i++;
 		usleep(50);
 	}
 	monitor(data);
+	return (0);
 }

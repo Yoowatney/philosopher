@@ -6,7 +6,7 @@
 /*   By: yoyoo <yoyoo@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/27 18:42:28 by yoyoo             #+#    #+#             */
-/*   Updated: 2021/12/01 18:00:48 by yoyoo            ###   ########.fr       */
+/*   Updated: 2021/12/01 19:42:21 by yoyoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ typedef struct s_data
 /* parsing */
 int				parsing(t_data **data, int argc, char **argv);
 /* thread */
-void			run_thread(t_data *data);
+int				run_thread(t_data *data);
 void			take_fork(t_philo *philo);
 void			all_free(t_data *data);
 /* utils */
